@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portal Clínico Pro</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <div class="sidebar">
+        <h2>Clínica Vital</h2>
+        <nav>
+            <a href="#" onclick="showSection('inicio')"><i class="fas fa-home"></i> Inicio</a>
+            <a href="#" onclick="showSection('programacion')"><i class="fas fa-calendar-plus"></i> Reservar Cita</a>
+            <a href="#" onclick="showSection('historial')"><i class="fas fa-history"></i> Mi Historial</a>
+            <a href="#" onclick="showSection('registroPacientes')"><i class="fas fa-register"></i> Registro de Pacientes</a>
+        </nav>
+    </div>
+
+    <div class="main-content">
+        <section id="inicio" class="content-section">
+            <div class="header-section">
+                <h1>Próximas Citas</h1>
+                <p>Gestiona tus consultas programadas para los próximos días.</p>
+            </div>
+            <div id="lista-citas" class="grid-citas">
+                </div>
+        </section>
+
+        <section id="programacion" class="content-section" style="display:none;">
+            <h1>Agendar Nueva Cita</h1>
+            <div class="form-container">
+                <form id="appointment-form">
+                    <div class="form-group">
+                        <label>Especialidad Médica</label>
+                        <select id="especialidad" required>
+                            <option value="Cardiología">Cardiología</option>
+                            <option value="Pediatría">Pediatría</option>
+                            <option value="Dermatología">Dermatología</option>
+                            <option value="Odontología">Odontología</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label>Fecha de la Cita</label>
+                        <input type="date" id="fecha-cita" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Hora</label>
+                        <input type="time" id="hora-cita" required>
+                    </div>
+                    <button type="submit" class="btn-submit">Confirmar y Guardar</button>
+                </form>
+            </div>
+        </section>
+
+        <section id="historial" class="content-section" style="display:none;">
+            <h1>Historial de Consultas</h1>
+            <div class="table-container">
+                <table id="tabla-historial">
+                    <thead>
+                        <tr>
+                            <th>Fecha</th>
+                            <th>Especialidad</th>
+                            <th>Estado</th>
+                            <th>Acciones</th>
+                        </tr>
+                    </thead>
+                    <tbody id="cuerpo-historial">
+                        </tbody>
+                </table>
+            </div>
+        </section>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
