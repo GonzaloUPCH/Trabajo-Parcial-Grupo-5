@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Módulo 1 - Registro de Pacientes</title>
+  <link rel="stylesheet" href="modulo1.css" />
+</head>
+<body>
+  <a class="skip-link" href="#contenido">Saltar al contenido</a>
+
+  <header class="topbar">
+    <div class="brand">
+      <svg viewBox="0 0 64 64" aria-label="Logo clínica" role="img">
+        <rect x="8" y="8" width="48" height="48" rx="14" fill="none" stroke="currentColor" stroke-width="4"></rect>
+        <path d="M32 18v28M18 32h28" stroke="currentColor" stroke-width="4" stroke-linecap="round"></path>
+      </svg>
+      <div>
+        <p class="eyebrow">Clínica</p>
+        <h1>Módulo 1: Registro de Pacientes</h1>
+      </div>
+    </div>
+    <button type="button" class="theme-toggle" id="themeToggle" aria-label="Cambiar tema">🌙</button>
+  </header>
+
+  <main id="contenido" class="app-shell">
+    <section class="panel form-panel">
+      <div class="panel-head">
+        <div>
+          <p class="panel-kicker">Formulario</p>
+          <h2>Datos del paciente</h2>
+        </div>
+        <span class="status-chip" id="modeBadge">Nuevo registro</span>
+      </div>
+
+      <div id="alertBox" class="alert" aria-live="polite"></div>
+
+      <form id="patientForm" novalidate>
+        <div class="grid grid-2">
+          <div class="field">
+            <label for="codigoPaciente">Código del paciente</label>
+            <input type="text" id="codigoPaciente" name="codigoPaciente" readonly />
+          </div>
+
+          <div class="field">
+            <label for="edad">Edad</label>
+            <input type="text" id="edad" name="edad" readonly placeholder="Se calcula automáticamente" />
+          </div>
+        </div>
+
+        <div class="grid grid-2">
+          <div class="field">
+            <label for="nombres">Nombres</label>
+            <input type="text" id="nombres" name="nombres" maxlength="60" placeholder="Ingrese nombres" />
+            <small>Mínimo 2 y máximo 60 caracteres.</small>
+          </div>
+
+          <div class="field">
+            <label for="apellidos">Apellidos</label>
+            <input type="text" id="apellidos" name="apellidos" maxlength="80" placeholder="Ingrese apellidos" />
+            <small>Mínimo 2 y máximo 80 caracteres.</small>
+          </div>
+        </div>
+
+        <div class="grid grid-3">
+          <div class="field">
+            <label for="tipoDocumento">Tipo de documento</label>
+            <select id="tipoDocumento" name="tipoDocumento">
+              <option value="DNI">DNI</option>
+              <option value="Pasaporte">Pasaporte</option>
+              <option value="Carnet de extranjería">Carnet de extranjería</option>
+              <option value="Otro">Otro</option>
+            </select>
+          </div>
+
+          <div class="field">
+            <label for="documento">Documento de identidad</label>
+            <input type="text" id="documento" name="documento" maxlength="15" placeholder="Número de documento" />
+            <small id="docHint">Para DNI: 8 dígitos numéricos.</small>
+          </div>
+
+          <div class="field">
+            <label for="fechaNacimiento">Fecha de nacimiento</label>
+            <input type="date" id="fechaNacimiento" name="fechaNacimiento" />
+          </div>
+        </div>
+
+        <div class="grid grid-2">
+          <div class="field">
+            <label for="telefono">Teléfono de contacto</label>
+            <input type="text" id="telefono" name="telefono" maxlength="9" inputmode="numeric" placeholder="987654321" />
+          </div>
+
+          <div class="field">
+            <label for="correo">Correo electrónico</label>
+            <input type="email" id="correo" name="correo" maxlength="100" placeholder="correo@dominio.com" />
+          </div>
+        </div>
+
+        <div class="grid grid-1">
+          <div class="field">
+            <label for="direccion">Dirección</label>
+            <input type="text" id="direccion" name="direccion" maxlength="150" placeholder="Dirección del paciente" />
+          </div>
+        </div>
+
+        <div class="grid grid-1">
+          <div class="field">
+            <label for="apoderado">Apoderado</label>
+            <input type="text" id="apoderado" name="apoderado" maxlength="100" placeholder="Se habilita si el paciente es menor de edad" disabled />
+            <small>Obligatorio si el paciente es menor de edad.</small>
+          </div>
+        </div>
+
+        <fieldset class="fieldset">
+          <legend>Alergias</legend>
+          <p class="fieldset-help">Seleccione una o varias. “Ninguna” no puede combinarse con otras.</p>
+
+          <div class="allergy-grid">
+            <label class="check">
+              <input type="checkbox" name="alergias" value="Ninguna" />
+              <span>Ninguna</span>
+            </label>
+            <label class="check">
+              <input type="checkbox" name="alergias" value="Penicilina" />
+              <span>Penicilina</span>
+            </label>
+            <label class="check">
+              <input type="checkbox" name="alergias" value="Ibuprofeno" />
+              <span>Ibuprofeno</span>
+            </label>
+            <label class="check">
+              <input type="checkbox" name="alergias" value="Paracetamol" />
+              <span>Paracetamol</span>
+            </label>
+            <label class="check">
+              <input type="checkbox" name="alergias" value="Mariscos" />
+              <span>Mariscos</span>
+            </label>
+            <label class="check">
+              <input type="checkbox" name="alergias" value="Lactosa" />
+              <span>Lactosa</span>
+            </label>
+            <label class="check">
+              <input type="checkbox" name="alergias" value="Polen" />
+              <span>Polen</span>
+            </label>
+            <label class="check">
+              <input type="checkbox" name="alergias" value="Otro" />
+              <span>Otro</span>
+            </label>
+          </div>
+
+          <div class="field mt-12" id="otroAlergiaWrap">
+            <label for="otroAlergia">Especifique otra alergia</label>
+            <input type="text" id="otroAlergia" name="otroAlergia" maxlength="80" placeholder="Detalle de la alergia" />
+          </div>
+        </fieldset>
+
+        <fieldset class="fieldset">
+          <legend>Contacto de emergencia</legend>
+
+          <div class="grid grid-3">
+            <div class="field">
+              <label for="emergenciaNombre">Nombre del contacto</label>
+              <input type="text" id="emergenciaNombre" name="emergenciaNombre" maxlength="80" placeholder="Nombre completo" />
+            </div>
+
+            <div class="field">
+              <label for="emergenciaParentesco">Parentesco</label>
+              <select id="emergenciaParentesco" name="emergenciaParentesco">
+                <option value="">Seleccione</option>
+                <option value="Padre">Padre</option>
+                <option value="Madre">Madre</option>
+                <option value="Hermano/a">Hermano/a</option>
+                <option value="Abuelo/a">Abuelo/a</option>
+                <option value="Tío/a">Tío/a</option>
+                <option value="Cónyuge">Cónyuge</option>
+                <option value="Hijo/a">Hijo/a</option>
+                <option value="Tutor">Tutor</option>
+                <option value="Amigo/a">Amigo/a</option>
+                <option value="Otro">Otro</option>
+              </select>
+            </div>
+
+            <div class="field">
+              <label for="emergenciaTelefono">Teléfono</label>
+              <input type="text" id="emergenciaTelefono" name="emergenciaTelefono" maxlength="9" inputmode="numeric" placeholder="987654321" />
+            </div>
+          </div>
+        </fieldset>
+
+        <div class="actions">
+          <button type="submit" class="btn btn-primary">Guardar paciente</button>
+          <button type="button" class="btn btn-secondary" id="cancelEditBtn">Cancelar edición</button>
+          <button type="reset" class="btn btn-ghost" id="clearBtn">Limpiar</button>
+        </div>
+      </form>
+    </section>
+
+    <section class="panel list-panel">
+      <div class="panel-head">
+        <div>
+          <p class="panel-kicker">Listado</p>
+          <h2>Pacientes registrados</h2>
+        </div>
+        <span class="status-chip muted" id="patientCount">0 pacientes</span>
+      </div>
+
+      <div class="toolbar">
+        <div class="field search-field">
+          <label for="searchInput">Buscar</label>
+          <input type="text" id="searchInput" placeholder="Buscar por nombre, apellido o documento" />
+        </div>
+      </div>
+
+      <div id="patientList" class="patient-list"></div>
+    </section>
+  </main>
+
+  <script src="modulo1.js"></script>
+</body>
+</html>
