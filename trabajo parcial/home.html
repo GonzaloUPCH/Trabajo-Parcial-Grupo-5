@@ -1,78 +1,256 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Portal Clínico Pro</title>
-    <link rel="stylesheet" href="home.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Clínica Vital - Panel Principal</title>
+  <link rel="stylesheet" href="home.css" />
 </head>
 <body>
-    <div class="sidebar">
-        <h2>Clínica Vital</h2>
-        <nav>
-            <a href="#" onclick="showSection('inicio')"><i class="fas fa-home"></i> Inicio</a>
-            <a href="#" onclick="showSection('programacion')"><i class="fas fa-calendar-plus"></i> Reservar Cita</a>
-            <a href="#" onclick="showSection('historial')"><i class="fas fa-history"></i> Mi Historial</a>
-            <a href="#" onclick="showSection('registroPacientes')"><i class="fas fa-register"></i> Registro de Pacientes</a>
-        </nav>
-    </div>
+  <aside class="sidebar">
+    <h2>Clínica Vital</h2>
+    <nav>
+      <a href="#" onclick="showSection('inicio'); return false;">Inicio</a>
+      <a href="#" onclick="showSection('reservar'); return false;">Reservar Cita</a>
+      <a href="#" onclick="showSection('historial'); return false;">Mi Historial</a>
+      <a href="#" onclick="showSection('registro-pacientes'); return false;">Registro de Pacientes</a>
+    </nav>
+  </aside>
 
-    <div class="main-content">
-        <section id="inicio" class="content-section">
-            <div class="header-section">
-                <h1>Próximas Citas</h1>
-                <p>Gestiona tus consultas programadas para los próximos días.</p>
-            </div>
-            <div id="lista-citas" class="grid-citas">
+  <main class="main-content">
+    <section id="inicio" class="content-section active">
+      <h1>Próximas Citas</h1>
+      <p>Gestiona tus consultas programadas para los próximos días.</p>
+      <div id="lista-citas" class="grid-citas"></div>
+    </section>
+
+    <section id="reservar" class="content-section">
+      <h1>Agendar Nueva Cita</h1>
+
+      <div class="form-container">
+        <form id="appointment-form">
+          <div class="form-group">
+            <label for="especialidad">Especialidad Médica</label>
+            <select id="especialidad" required>
+              <option value="">Seleccione una opción</option>
+              <option value="Cardiología">Cardiología</option>
+              <option value="Pediatría">Pediatría</option>
+              <option value="Dermatología">Dermatología</option>
+              <option value="Odontología">Odontología</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label for="fecha-cita">Fecha de la Cita</label>
+            <input type="date" id="fecha-cita" required />
+          </div>
+
+          <div class="form-group">
+            <label for="hora-cita">Hora</label>
+            <input type="time" id="hora-cita" required />
+          </div>
+
+          <button type="submit" class="btn-submit">Confirmar y Guardar</button>
+        </form>
+      </div>
+    </section>
+
+    <section id="historial" class="content-section">
+      <h1>Historial de Consultas</h1>
+
+      <div class="table-container">
+        <table>
+          <thead>
+            <tr>
+              <th>Fecha</th>
+              <th>Especialidad</th>
+              <th>Hora</th>
+              <th>Estado</th>
+              <th>Acciones</th>
+            </tr>
+          </thead>
+          <tbody id="cuerpo-historial"></tbody>
+        </table>
+      </div>
+    </section>
+
+    <section id="registro-pacientes" class="content-section">
+      <div class="home-module1">
+        <div class="panel-head home-panel-head">
+          <div>
+            <p class="panel-kicker">Formulario</p>
+            <h1>Registro de Pacientes</h1>
+            <p>Administra los datos del paciente dentro del panel principal.</p>
+          </div>
+          <span class="status-chip" id="modeBadge">Nuevo registro</span>
+        </div>
+
+        <div id="alertBox" class="alert" aria-live="polite"></div>
+
+        <div class="app-shell">
+          <section class="panel form-panel">
+            <form id="patientForm" novalidate>
+              <div class="grid grid-2">
+                <div class="field">
+                  <label for="codigoPaciente">Código del paciente</label>
+                  <input type="text" id="codigoPaciente" name="codigoPaciente" readonly />
                 </div>
-        </section>
 
-        <section id="programacion" class="content-section" style="display:none;">
-            <h1>Agendar Nueva Cita</h1>
-            <div class="form-container">
-                <form id="appointment-form">
-                    <div class="form-group">
-                        <label>Especialidad Médica</label>
-                        <select id="especialidad" required>
-                            <option value="Cardiología">Cardiología</option>
-                            <option value="Pediatría">Pediatría</option>
-                            <option value="Dermatología">Dermatología</option>
-                            <option value="Odontología">Odontología</option>
-                        </select>
-                    </div>
-                    <div class="form-group">
-                        <label>Fecha de la Cita</label>
-                        <input type="date" id="fecha-cita" required>
-                    </div>
-                    <div class="form-group">
-                        <label>Hora</label>
-                        <input type="time" id="hora-cita" required>
-                    </div>
-                    <button type="submit" class="btn-submit">Confirmar y Guardar</button>
-                </form>
+                <div class="field">
+                  <label for="edad">Edad</label>
+                  <input type="text" id="edad" name="edad" readonly placeholder="Se calcula automáticamente" />
+                </div>
+              </div>
+
+              <div class="grid grid-2">
+                <div class="field">
+                  <label for="nombres">Nombres</label>
+                  <input type="text" id="nombres" name="nombres" maxlength="60" placeholder="Ingrese nombres" />
+                  <small>Mínimo 2 y máximo 60 caracteres.</small>
+                </div>
+
+                <div class="field">
+                  <label for="apellidos">Apellidos</label>
+                  <input type="text" id="apellidos" name="apellidos" maxlength="80" placeholder="Ingrese apellidos" />
+                  <small>Mínimo 2 y máximo 80 caracteres.</small>
+                </div>
+              </div>
+
+              <div class="grid grid-3">
+                <div class="field">
+                  <label for="tipoDocumento">Tipo de documento</label>
+                  <select id="tipoDocumento" name="tipoDocumento">
+                    <option value="DNI">DNI</option>
+                    <option value="Pasaporte">Pasaporte</option>
+                    <option value="Carnet de extranjería">Carnet de extranjería</option>
+                    <option value="Otro">Otro</option>
+                  </select>
+                </div>
+
+                <div class="field">
+                  <label for="documento">Documento de identidad</label>
+                  <input type="text" id="documento" name="documento" maxlength="15" placeholder="Número de documento" />
+                  <small id="docHint">Para DNI: 8 dígitos numéricos.</small>
+                </div>
+
+                <div class="field">
+                  <label for="fechaNacimiento">Fecha de nacimiento</label>
+                  <input type="date" id="fechaNacimiento" name="fechaNacimiento" />
+                </div>
+              </div>
+
+              <div class="grid grid-2">
+                <div class="field">
+                  <label for="telefono">Teléfono de contacto</label>
+                  <input type="text" id="telefono" name="telefono" maxlength="9" inputmode="numeric" placeholder="987654321" />
+                </div>
+
+                <div class="field">
+                  <label for="correo">Correo electrónico</label>
+                  <input type="email" id="correo" name="correo" maxlength="100" placeholder="correo@dominio.com" />
+                </div>
+              </div>
+
+              <div class="grid grid-1">
+                <div class="field">
+                  <label for="direccion">Dirección</label>
+                  <input type="text" id="direccion" name="direccion" maxlength="150" placeholder="Dirección del paciente" />
+                </div>
+              </div>
+
+              <div class="grid grid-1">
+                <div class="field">
+                  <label for="apoderado">Apoderado</label>
+                  <input type="text" id="apoderado" name="apoderado" maxlength="100" placeholder="Se habilita si el paciente es menor de edad" disabled />
+                  <small>Obligatorio si el paciente es menor de edad.</small>
+                </div>
+              </div>
+
+              <fieldset class="fieldset">
+                <legend>Alergias</legend>
+                <p class="fieldset-help">Seleccione una o varias. “Ninguna” no puede combinarse con otras.</p>
+
+                <div class="allergy-grid">
+                  <label class="check"><input type="checkbox" name="alergias" value="Ninguna" /><span>Ninguna</span></label>
+                  <label class="check"><input type="checkbox" name="alergias" value="Penicilina" /><span>Penicilina</span></label>
+                  <label class="check"><input type="checkbox" name="alergias" value="Ibuprofeno" /><span>Ibuprofeno</span></label>
+                  <label class="check"><input type="checkbox" name="alergias" value="Paracetamol" /><span>Paracetamol</span></label>
+                  <label class="check"><input type="checkbox" name="alergias" value="Mariscos" /><span>Mariscos</span></label>
+                  <label class="check"><input type="checkbox" name="alergias" value="Lactosa" /><span>Lactosa</span></label>
+                  <label class="check"><input type="checkbox" name="alergias" value="Polen" /><span>Polen</span></label>
+                  <label class="check"><input type="checkbox" name="alergias" value="Otro" /><span>Otro</span></label>
+                </div>
+
+                <div class="field mt-12" id="otroAlergiaWrap">
+                  <label for="otroAlergia">Especifique otra alergia</label>
+                  <input type="text" id="otroAlergia" name="otroAlergia" maxlength="80" placeholder="Detalle de la alergia" />
+                </div>
+              </fieldset>
+
+              <fieldset class="fieldset">
+                <legend>Contacto de emergencia</legend>
+
+                <div class="grid grid-3">
+                  <div class="field">
+                    <label for="emergenciaNombre">Nombre del contacto</label>
+                    <input type="text" id="emergenciaNombre" name="emergenciaNombre" maxlength="80" placeholder="Nombre completo" />
+                  </div>
+
+                  <div class="field">
+                    <label for="emergenciaParentesco">Parentesco</label>
+                    <select id="emergenciaParentesco" name="emergenciaParentesco">
+                      <option value="">Seleccione</option>
+                      <option value="Padre">Padre</option>
+                      <option value="Madre">Madre</option>
+                      <option value="Hermano/a">Hermano/a</option>
+                      <option value="Abuelo/a">Abuelo/a</option>
+                      <option value="Tío/a">Tío/a</option>
+                      <option value="Cónyuge">Cónyuge</option>
+                      <option value="Hijo/a">Hijo/a</option>
+                      <option value="Tutor">Tutor</option>
+                      <option value="Amigo/a">Amigo/a</option>
+                      <option value="Otro">Otro</option>
+                    </select>
+                  </div>
+
+                  <div class="field">
+                    <label for="emergenciaTelefono">Teléfono</label>
+                    <input type="text" id="emergenciaTelefono" name="emergenciaTelefono" maxlength="9" inputmode="numeric" placeholder="987654321" />
+                  </div>
+                </div>
+              </fieldset>
+
+              <div class="actions">
+                <button type="submit" class="btn btn-primary">Guardar paciente</button>
+                <button type="button" class="btn btn-secondary" id="cancelEditBtn">Cancelar edición</button>
+                <button type="reset" class="btn btn-ghost" id="clearBtn">Limpiar</button>
+              </div>
+            </form>
+          </section>
+
+          <section class="panel list-panel">
+            <div class="panel-head">
+              <div>
+                <p class="panel-kicker">Listado</p>
+                <h2>Pacientes registrados</h2>
+              </div>
+              <span class="status-chip muted" id="patientCount">0 pacientes</span>
             </div>
-        </section>
 
-        <section id="historial" class="content-section" style="display:none;">
-            <h1>Historial de Consultas</h1>
-            <div class="table-container">
-                <table id="tabla-historial">
-                    <thead>
-                        <tr>
-                            <th>Fecha</th>
-                            <th>Especialidad</th>
-                            <th>Estado</th>
-                            <th>Acciones</th>
-                        </tr>
-                    </thead>
-                    <tbody id="cuerpo-historial">
-                        </tbody>
-                </table>
+            <div class="toolbar">
+              <div class="field search-field">
+                <label for="searchInput">Buscar</label>
+                <input type="text" id="searchInput" placeholder="Buscar por nombre, apellido o documento" />
+              </div>
             </div>
-        </section>
-    </div>
 
-    <script src="script.js"></script>
+            <div id="patientList" class="patient-list"></div>
+          </section>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <script src="home.js"></script>
 </body>
 </html>
