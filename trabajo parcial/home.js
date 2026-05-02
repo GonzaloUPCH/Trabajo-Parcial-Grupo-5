@@ -40,11 +40,10 @@ function crearCita() {
   const nuevaCita = {
     id: Date.now(),
     especialidad,
-    fecha,
+    fecha,             
     hora,
     estado: "Pendiente"
-  };
-
+  };          
   misCitas.push(nuevaCita);
   localStorage.setItem("citas_clinica", JSON.stringify(misCitas));
   document.getElementById("appointment-form").reset();

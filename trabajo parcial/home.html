@@ -11,9 +11,9 @@
     <h2>Clínica Vital</h2>
     <nav>
       <a href="#" onclick="showSection('inicio'); return false;">Inicio</a>
+      <a href="#" onclick="showSection('registro-pacientes'); return false;">Registro de Pacientes</a>
       <a href="#" onclick="showSection('reservar'); return false;">Reservar Cita</a>
       <a href="#" onclick="showSection('historial'); return false;">Mi Historial</a>
-      <a href="#" onclick="showSection('registro-pacientes'); return false;">Registro de Pacientes</a>
     </nav>
   </aside>
 
@@ -24,9 +24,8 @@
       <div id="lista-citas" class="grid-citas"></div>
     </section>
 
-    <section id="reservar" class="content-section">
-      <h1>Agendar Nueva Cita</h1>
-
+    <section id="reservar" class="content-section"> 
+      <h1>Agendar Nueva Cita</h1> 
       <div class="form-container">
         <form id="appointment-form">
           <div class="form-group">
@@ -42,12 +41,12 @@
 
           <div class="form-group">
             <label for="fecha-cita">Fecha de la Cita</label>
-            <input type="date" id="fecha-cita" required />
+            <input type="date" id="fecha-cita" required /> 
           </div>
 
           <div class="form-group">
             <label for="hora-cita">Hora</label>
-            <input type="time" id="hora-cita" required />
+            <input type="time" id="hora-cita" required /> 
           </div>
 
           <button type="submit" class="btn-submit">Confirmar y Guardar</button>
@@ -55,7 +54,7 @@
       </div>
     </section>
 
-    <section id="historial" class="content-section">
+    <section id="historial" class="content-section"> 
       <h1>Historial de Consultas</h1>
 
       <div class="table-container">
@@ -78,11 +77,11 @@
       <div class="home-module1">
         <div class="panel-head home-panel-head">
           <div>
-            <p class="panel-kicker">Formulario</p>
+            <p class="panel-kicker">Formulario</p> 
             <h1>Registro de Pacientes</h1>
-            <p>Administra los datos del paciente dentro del panel principal.</p>
+            <p>Administra los datos del paciente dentro del panel principal.</p> 
           </div>
-          <span class="status-chip" id="modeBadge">Nuevo registro</span>
+          <span class="status-chip" id="modeBadge">Nuevo registro</span> 
         </div>
 
         <div id="alertBox" class="alert" aria-live="polite"></div>
@@ -92,7 +91,7 @@
             <form id="patientForm" novalidate>
               <div class="grid grid-2">
                 <div class="field">
-                  <label for="codigoPaciente">Código del paciente</label>
+                  <label for="codigoPaciente">Código del paciente</label> 
                   <input type="text" id="codigoPaciente" name="codigoPaciente" readonly />
                 </div>
 

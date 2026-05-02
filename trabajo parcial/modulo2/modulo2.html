@@ -7,11 +7,12 @@
     <link rel="stylesheet" href="modulo2.css">
 </head>
 <body>
+    <a class="skip-link" href="#contenido"></a>
     <div id="seccion-modulo2"
-    <div class="container">
-        <header>
-            <h1>Programación de Citas Médicas</h1>
-            <p>Módulo 2: Gestión de Reservas</p>
+
+    <header 
+         <h1>Programación de Citas Médicas</h1>
+         <p>Gestión de Reservas</p>
         </header>
 
         <main>
@@ -19,7 +20,7 @@
                 <h2>Nueva Cita <span id="display-cita-id" class="badge">Autogenerado</span></h2>
                 <form id="appointment-form">
                     <div class="grid-layout">
-                        <!-- Selección de Paciente (Conexión Módulo 1) -->
+                       
                         <div class="form-control">
                             <label for="paciente">Paciente registrado</label>
                             <select id="paciente" required>
@@ -27,7 +28,7 @@
                             </select>
                         </div>
 
-                        <!-- Alerta de Alergias -->
+                       
                         <div id="alerta-alergia" class="alerta-box hidden">
                             <p><strong>⚠️ Alergia:</strong> <span id="alergia-info"></span></p>
                         </div>
