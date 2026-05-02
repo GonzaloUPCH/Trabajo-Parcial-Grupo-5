@@ -1,0 +1,142 @@
+:root {
+    --azul-profundo: #1e40af;
+    --azul-medio: #0284c7;
+    --celeste-brillante: #38bdf8;
+    --celeste-claro: #e0f2fe;
+    --blanco-cristal: rgba(255, 255, 255, 0.92);
+}
+
+/* SOLO MODULO 2 */
+#seccion-modulo2 {
+    padding: 30px;
+    background: linear-gradient(135deg, #075985, #0ea5e9, #bae6fd, #0369a1);
+    background-size: 300% 300%;
+    animation: flujoAzulCeleste 10s ease-in-out infinite;
+    min-height: 100vh;
+}
+
+@keyframes flujoAzulCeleste {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+#seccion-modulo2 .container {
+    width: 95%;
+    max-width: 1000px;
+    margin: auto;
+}
+
+#seccion-modulo2 header {
+    text-align: center;
+    color: white;
+    margin-bottom: 30px;
+}
+
+#seccion-modulo2 .card {
+    background: var(--blanco-cristal);
+    backdrop-filter: blur(12px);
+    border-radius: 20px;
+    padding: 30px;
+    margin-bottom: 30px;
+    border: 1px solid rgba(255,255,255,0.4);
+    box-shadow: 0 15px 35px rgba(0,0,0,0.1);
+}
+
+#seccion-modulo2 h2 {
+    color: var(--azul-profundo);
+    border-bottom: 2px solid var(--celeste-claro);
+    padding-bottom: 10px;
+}
+
+#seccion-modulo2 .grid-layout {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 20px;
+}
+
+#seccion-modulo2 .full-span {
+    grid-column: 1 / -1;
+}
+
+#seccion-modulo2 .form-control label {
+    font-weight: 600;
+    color: #334155;
+    display: block;
+    margin-bottom: 8px;
+}
+
+#seccion-modulo2 input,
+#seccion-modulo2 select,
+#seccion-modulo2 textarea {
+    width: 100%;
+    padding: 12px;
+    border: 2px solid #e2e8f0;
+    border-radius: 12px;
+    background: #f8fafc;
+    font-size: 1rem;
+    box-sizing: border-box;
+}
+
+#seccion-modulo2 input:focus,
+#seccion-modulo2 select:focus,
+#seccion-modulo2 textarea:focus {
+    border-color: var(--azul-medio);
+    outline: none;
+    box-shadow: 0 0 0 4px rgba(56,189,248,0.2);
+}
+
+#seccion-modulo2 .alerta-box {
+    grid-column: 1 / -1;
+    background: #fff1f2;
+    border-left: 5px solid #ef4444;
+    padding: 15px;
+    border-radius: 10px;
+    color: #991b1b;
+}
+
+#seccion-modulo2 .btn-submit {
+    background: linear-gradient(90deg, var(--azul-medio), var(--azul-profundo));
+    color: white;
+    border: none;
+    padding: 16px;
+    border-radius: 12px;
+    font-weight: bold;
+    cursor: pointer;
+    width: 100%;
+    margin-top: 20px;
+}
+
+#seccion-modulo2 .btn-submit:hover {
+    transform: translateY(-2px);
+}
+
+#seccion-modulo2 table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+    background: white;
+}
+
+#seccion-modulo2 th {
+    background: var(--celeste-claro);
+    padding: 15px;
+    text-align: left;
+}
+
+#seccion-modulo2 td {
+    padding: 15px;
+    border-bottom: 1px solid #f1f5f9;
+}
+
+#seccion-modulo2 .badge {
+    background: var(--azul-profundo);
+    color: white;
+    padding: 5px 10px;
+    border-radius: 6px;
+    font-size: 0.8rem;
+}
+
+.hidden {
+    display: none;
+}

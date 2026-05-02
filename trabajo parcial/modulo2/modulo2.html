@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Clínica - Reserva de Citas (Módulo 2)</title>
+    <link rel="stylesheet" href="modulo2.css">
+</head>
+<body>
+    <a class="skip-link" href="#contenido"></a>
+    <div id="seccion-modulo2"
+
+    <header 
+         <h1>Programación de Citas Médicas</h1>
+         <p>Gestión de Reservas</p>
+        </header>
+
+        <main>
+            <section class="card shadow-chic">
+                <h2>Nueva Cita <span id="display-cita-id" class="badge">Autogenerado</span></h2>
+                <form id="appointment-form">
+                    <div class="grid-layout">
+                       
+                        <div class="form-control">
+                            <label for="paciente">Paciente registrado</label>
+                            <select id="paciente" required>
+                                <option value="">Seleccione un paciente...</option>
+                            </select>
+                        </div>
+
+                       
+                        <div id="alerta-alergia" class="alerta-box hidden">
+                            <p><strong>⚠️ Alergia:</strong> <span id="alergia-info"></span></p>
+                        </div>
+
+                        <div class="form-control">
+                            <label for="especialidad">Especialidad Médica</label>
+                            <select id="especialidad" required>
+                                <option value="">Seleccione...</option>
+                                <option value="Medicina General">Medicina General</option>
+                                <option value="Pediatría">Pediatría</option>
+                                <option value="Cardiología">Cardiología</option>
+                                <option value="Dermatología">Dermatología</option>
+                                <option value="Traumatología">Traumatología</option>
+                                <option value="Odontología">Odontología</option>
+                            </select>
+                        </div>
+
+                        <div class="form-control">
+                            <label for="medico">Médico Asignado</label>
+                            <select id="medico" required>
+                                <option value="">Seleccione especialidad primero...</option>
+                            </select>
+                        </div>
+
+                        <div class="form-control">
+                            <label for="fecha">Fecha</label>
+                            <input type="date" id="fecha" required>
+                        </div>
+
+                        <div class="form-control">
+                            <label for="hora">Hora (08:00 - 18:00)</label>
+                            <input type="time" id="hora" min="08:00" max="18:00" required>
+                        </div>
+
+                        <div class="form-control">
+                            <label for="prioridad">Prioridad</label>
+                            <select id="prioridad" required>
+                                <option value="Normal">Normal</option>
+                                <option value="Preferencial">Preferencial</option>
+                                <option value="Urgente">Urgente</option>
+                            </select>
+                        </div>
+
+                        <div id="justificacion-container" class="form-control full-span hidden">
+                            <label for="justificacion">Justificación de Urgencia (Mín. 10 carac.)</label>
+                            <textarea id="justificacion" rows="2"></textarea>
+                        </div>
+
+                        <div class="form-control full-span">
+                            <label for="motivo">Motivo de Consulta</label>
+                            <textarea id="motivo" rows="6" minlength="10" maxlength="200" required placeholder="Escriba el motivo detallado..."></textarea>
+                        </div>
+                    </div>
+                    <button type="submit" class="btn-submit">Registrar Cita</button>
+                </form>
+            </section>
+
+            <section class="card table-card">
+                <h2>Citas Programadas</h2>
+                <div class="responsive-table">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Código</th>
+                                <th>Paciente</th>
+                                <th>Especialidad/Médico</th>
+                                <th>Fecha/Hora</th>
+                                <th>Estado</th>
+                                <th>Acciones</th>
+                            </tr>
+                        </thead>
+                        <tbody id="citas-body"></tbody>
+                    </table>
+                </div>
+            </section>
+        </main>
+    </div>
+    <script src="modulo2.js"></script>
+</body>
+</html>
