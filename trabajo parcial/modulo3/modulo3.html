@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Módulo 3: Atención al Paciente</title>
+    <link rel="stylesheet" href="modulo3.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Sala de Espera y Atención</h1>
+
+        <!-- Filtros obligatorios de la pauta -->
+        <div class="filtros-container">
+            <input type="text" id="busqueda" placeholder="Buscar por DNI o Nombre...">
+            <select id="filtro-especialidad">
+                <option value="">Filtrar por Especialidad</option>
+            </select>
+            <select id="filtro-medico">
+                <option value="">Filtrar por Médico</option>
+            </select>
+        </div>
+
+        <!-- Tabla de pacientes en espera -->
+        <div class="tabla-atencion">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Prioridad / Justificación</th>
+                        <th>Hora Llegada</th>
+                        <th>Paciente (Alergias)</th>
+                        <th>Médico / Especialidad</th>
+                        <th>Estado Actual</th>
+                        <th>Acciones</th>
+                    </tr>
+                </thead>
+                <tbody id="cuerpo-tabla-espera">
+                    <!-- Dinámico -->
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <script src="modulo3.js"></script>
+</body>
+</html>
